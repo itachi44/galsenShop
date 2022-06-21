@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <title>liste categories</title>
+    <h:outputStylesheet  name="css/style.css"/>
+</h:head>
+
+<h:body>
+
+    <b:navBar brandHref="#" fluid="true">
+        <b:row>
+            <b:column span="3" >
+                <b:image styleClass="logo" library="brand" name="logo.png" tooltip="galsenShop votre boutique en ligne" />
+            </b:column>
+            <b:column style="margin-top:1.5%;" span="2" offset="7">
+                <b:navbarLinks>
+                    <b:navLink style="font-size:1.1em;" value="A propos" href="#">
+                    </b:navLink>
+                </b:navbarLinks>
+            </b:column>
+        </b:row>
+        <!--
+        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" action="">
+            <div class="form-group">
+                <input type="text" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <b:navbarLinks pull="right">
+            <b:navLink value="" href="#">
+            </b:navLink>
+        </b:navbarLinks>
+        -->
+    </b:navBar>
+
+
+    <b:modal id="cmodal" title="Ajouter une categorie" styleClass="ajouterCategorie cmodal">
+        <h:form>
+                <b:panel id="result" cellpadding="5">
+
+                <b:inputText maxlength="3" style="width:90%;" placeholder="Ex: AAA" value="#{AjoutCategorieBean.categorie.code_categorie}" id="code_categorie" required="true" label="Code categorie :" labelStyle="width:70%;" requiredMessage="code categorie obligatoire"/>
+                <h:message for="code_categorie"/>
+
+                <b:inputText style="width:90%;" placeholder="Ex: materiel de bureau " value="#{AjoutCategorieBean.categorie.libelle}" id="libelle" required="true" label="Libelle : " labelStyle="width:60%;" requiredMessage="Le libelle est obligatoire"/>
+                <h:message for="libelle"/>
+                    <b:inputTextarea style="width:90%;"  required="true" requiredMessage="La description est obligatoire" label="Description : " placeholder="Desciption de la catégorie ici..." value="#{AjoutCategorieBean.categorie.description}"/>
+                <b:inputText min="0" max="20" style="width:30%;" type="number" value="#{AjoutCategorieBean.categorie.tva}" id="TVA" required="true" label="TVA :" labelStyle="width:60%;" requiredMessage="TVA obligatoire"/>
+                    <h:message for="TVA"/>
+
+                </b:panel>
+            <b:row>
+                <b:messages autoUpdate="true" styleClass="statusMessages"  value="large-screen='full-width'" large-screen="full-width" />
+                <b:column span="5" offset="4" >
+                    <b:button style="margin-right:2%;" value="Fermer" dismiss="modal" />
+                    <b:commandButton value="Enregister" ajax="true" update="@form @(.statusMessages)"  look="primary" dismiss="modal" action="#{AjoutCategorieBean.enregistrerCategorie()}"/>
+                </b:column>
+            </b:row>
+
+        </h:form>
+
+    </b:modal>
+
+    <h:form class="categoriesTable">
+        <b:dataTable value="#{ListCategoriesBean.categories}"
+                     var="categorie">
+            <b:dataTableColumn value="#{categorie.code_categorie}" order="asc" />
+            <b:dataTableColumn value="#{categorie.libelle}" />
+            <b:dataTableColumn value="#{categorie.tva}" />
+            <b:dataTableColumn style="text-align:center;" label="Action" >
+                <p:commandButton value="Supprimer" styleClass="ui-button-danger" iconAwesome="trash"
+                                 action="#{SupprimerCategorieBean.supprimer(categorie)}">
+                    <p:confirm header="Confirmation" message="Voulez-vous vraiment supprimer la catégorie #{categorie.code_categorie}" icon="pi pi-info-circle"/>
+                </p:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        <p:confirmDialog global="true" showEffect="fade" responsive="true" width="350">
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
+        <b:row>
+            <b:column span="4" offset="5">
+                <b:button look="success" onclick="$('.ajouterCategorie').modal()" value="Ajouter une catégorie"/>
+            </b:column>
+        </b:row>
+    </h:form>
+
+
+    <b:panel class="footer">
+        <b:row>
+            <b:column span="3">
+                <h:outputText value="Copyright 2022 EPT-DIC2 GIT"/>
+            </b:column>
+            <b:column span="3" offset="6">
+                <h:outputText value="GalsenShop votre boutique en ligne."/>
+            </b:column>
+        </b:row>
+    </b:panel>
+
+
+</h:body>
+</html>
+

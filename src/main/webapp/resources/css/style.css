@@ -1,0 +1,21 @@
+.logo{
+    max-height: 100px;
+    border-radius: 70%;
+    max-width: 30%;
+    margin-right: 25%;
+}
+
+.categoriesTable{
+    margin-top: 10%;
+    margin-bottom: 2%;
+    font-size: 20px;
+    width: 95%;
+    margin-left: 2%;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:#6cf;
+}

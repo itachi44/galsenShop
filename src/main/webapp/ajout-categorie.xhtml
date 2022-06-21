@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+>
+<h:head>
+    <title>liste categories</title>
+    <h:outputStylesheet  name="css/style.css"/>
+
+</h:head>
+
+<h:body>
+
+    <b:navBar brandHref="#" fluid="true">
+        <b:row>
+            <b:column span="3" >
+                <b:image styleClass="logo" library="brand" name="logo.png" tooltip="galsenShop votre boutique en ligne" />
+            </b:column>
+            <b:column style="margin-top:1.5%;" span="2" offset="7">
+                <b:navbarLinks>
+                    <b:navLink style="font-size:1.1em;" value="A propos" href="#">
+                    </b:navLink>
+                </b:navbarLinks>
+            </b:column>
+        </b:row>
+        <!--
+        <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" action="">
+            <div class="form-group">
+                <input type="text" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <b:navbarLinks pull="right">
+            <b:navLink value="" href="#">
+            </b:navLink>
+        </b:navbarLinks>
+        -->
+    </b:navBar>
+
+    <!--
+    <h:form>
+        <h:outputText value="Code Categorie:#{AjoutCategorieBean.categorie.code_categorie}"/>
+        <h:messages/>
+        <h:panelGrid columns="3">
+            <f:facet name="header">
+                header
+            </f:facet>
+
+            <f:facet name="footer">
+                <h:commandButton value="Enregister" action="#{AjoutCategorieBean.enregistrerCategorie()}" />
+            </f:facet>
+
+            <h:outputText value="Libelle:"/>
+            <h:inputText value="#{AjoutCategorieBean.categorie.libelle}" id="libelle" required="true" requiredMessage="Le libelle est obligatoire"/>
+            <h:message for="libelle"/>
+
+
+            <h:outputText  value="Description :"/>
+            <h:inputText value="#{AjoutCategorieBean.categorie.description}" required="true" requiredMessage="La description est obligatoire"/>
+
+            <h:outputText value="TVA"/>
+            <h:inputText value="#{AjoutCategorieBean.categorie.tva}"/>
+
+
+        </h:panelGrid>
+    </h:form>
+
+-->
+</h:body>
+</html>
+

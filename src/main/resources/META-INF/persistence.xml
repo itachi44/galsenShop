@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="galsenShopPU" transaction-type="JTA">
+        <jta-data-source>jdbc/GalsenShopPool</jta-data-source>
+        <class>sn.ept.galsenshop.entities.Categorie</class>
+        <class>sn.ept.galsenshop.entities.Article</class>
+        <class>sn.ept.galsenshop.entities.LigneArticle</class>
+        <class>sn.ept.galsenshop.entities.Facture</class>
+        <class>sn.ept.galsenshop.entities.Client</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
